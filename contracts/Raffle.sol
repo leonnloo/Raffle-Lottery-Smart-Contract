@@ -136,7 +136,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface{
         if (!success) {
             revert Raffle__TransferFailed();
         }
-        emit RaffleEnter(recentWinner);
+        emit WinnerPicked(recentWinner);
     }
 
     function getRaffleState() public view returns (RaffleState) {
