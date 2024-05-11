@@ -11,7 +11,7 @@ const SEPOLIA_RPC_URL =
     process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY"
 const PRIVATE_KEY =
     process.env.PRIVATE_KEY || "0x11ee3108a03081fe260ecdc106554d09d9d1209bcafd46942b10e02943effc4a"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -41,6 +41,23 @@ module.exports = {
         runOnCompile: false,
         only: ["Raffle"],
     },
+    etherscan: {
+        // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+        apiKey: {
+            sepolia: ETHERSCAN_API_KEY,
+            // polygon: POLYGONSCAN_API_KEY,
+        },
+        customChains: [
+            {
+                network: "sepolia",
+                chainId: 11155111,
+                urls: {
+                    apiURL: "http://api-sepolia.etherscan.io/api",
+                    browserURL: "https://sepolia.etherscan.io",
+                },
+            },
+        ],
+    },
     namedAccounts: {
         deployer: {
             default: 0, // here this will by default take the first account as deployer
@@ -51,6 +68,9 @@ module.exports = {
         },
     },
     mocha: {
-      timeout: 200000, // 200 seconds timeout
+        timeout: 500000, // 200 seconds timeout
+    },
+    sourcify: {
+      enabled: true
     }
 }

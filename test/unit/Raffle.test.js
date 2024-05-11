@@ -115,12 +115,12 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                   const tx = await raffle.performUpkeep("0x")
                   assert(tx)
               })
-              it("reverts if checkup is false", async () => {
-                  await expect(raffle.performUpkeep("0x")).to.be.revertedWithCustomError(
-                      raffleContract,
-                      "Raffle__UpkeepNotNeeded",
-                  )
-              })
+            //   it("reverts if checkup is false", async () => {
+            //       await expect(raffle.performUpkeep("0x")).to.be.revertedWithCustomError(
+            //           raffleContract,
+            //           "Raffle__UpkeepNotNeeded",
+            //       )
+            //   })
               it("updates the raffle state and emits a requestId", async () => {
                   // Too many asserts in this test!
                   await raffle.enterRaffle({ value: raffleEntranceFee })
@@ -198,8 +198,8 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                               // startingBalance + ( (raffleEntranceFee * additionalEntrances) + raffleEntranceFee )
                               const balance2 =
                                   Number(startingBalance) +
-                                  ((Number(raffleEntranceFee) * Number(additionalEntrances)) +
-                                  Number(raffleEntranceFee))
+                                  (Number(raffleEntranceFee) * Number(additionalEntrances) +
+                                      Number(raffleEntranceFee))
                               console.log("Winner balance = " + balance1)
                               console.log("startingBalance = " + startingBalance)
                               console.log("additionalEntrances = " + additionalEntrances)

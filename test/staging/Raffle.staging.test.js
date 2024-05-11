@@ -1,5 +1,5 @@
 const { assert, expect } = require("chai")
-const { getNamedAccounts, ethers, network } = require("hardhat")
+const { getNamedAccounts, ethers, network, deployments } = require("hardhat")
 const { developmentChains } = require("../../helper-hardhat-config")
 
 developmentChains.includes(network.name)
@@ -9,7 +9,10 @@ developmentChains.includes(network.name)
 
           beforeEach(async function () {
               deployer = (await getNamedAccounts()).deployer
-              raffle = await ethers.getContract("Raffle", deployer)
+            //   const raffleAddress = (await deployments.get("Raffle")).address
+            //   raffle = await ethers.getContractAt("Raffle", raffleAddress)
+              const raffleD = await deployments.get("Raffle")
+              raffle = await ethers.getContractAt(raffleD.abi, raffleD.address)
               raffleEntranceFee = await raffle.getEntranceFee()
           })
 
@@ -35,13 +38,14 @@ developmentChains.includes(network.name)
                               )
                               const endingTimeStamp = await raffle.getLastTimeStamp()
 
+                              // raffle is reset
                               await expect(raffle.getPlayer(0)).to.be.reverted
+
                               assert.equal(recentWinner.toString(), accounts[0].getAddress())
                               assert.equal(raffleState, 0)
-                              assert.equal(
-                                  Number(winnerEndingBalance),
-                                  Number(winnerStartingBalance) + formatEther(raffleEntranceFee),
-                              )
+                              const balance1 = Number(winnerEndingBalance)
+                              const balance2 = Number(winnerStartingBalance) + Number(raffleEntranceFee)
+                              assert.equal(balance1, balance2)
                               assert(endingTimeStamp > startingTimeStamp)
                               resolve()
                           } catch (error) {
