@@ -7,4 +7,4 @@ Chainlink automation
 2. Dploy contract using the the SubId
 3. Register the contract with Chainlink VRF & it's SubId
 4. Register the contract with Chainlink Automation
-5. Run Staging test
+5. Run Staging test 
