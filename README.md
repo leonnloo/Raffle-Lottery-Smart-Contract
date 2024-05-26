@@ -2,7 +2,7 @@
 
 ## 📖 Overview
 
-This repository serves as a practical demonstration of utilizing the Hardhat framework and  Chainlink automation for Ethereum smart contract development. Inspired by the [Solidity, Blockchain, and Smart Contract Course – Beginner to Expert Python Tutorial](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=34221s) by Patrick Collins from freeCodeCamp, project is structured to provide a hands-on experience in building, compiling, deploying, and testing Solidity smart contracts. It utilizes chainlink automation to randomly select a winner among those users that register into the raffle with 0.1 eth participation fee.
+This repository serves as a practical demonstration of utilizing the Hardhat framework and  Chainlink automation for Ethereum smart contract development. Inspired by the [Solidity, Blockchain, and Smart Contract Course – Beginner to Expert Python Tutorial](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=34221s) by Patrick Collins from freeCodeCamp, project is structured to provide a hands-on experience in building, compiling, deploying, and testing Solidity smart contracts. It utilizes chainlink automation to randomly select a winner among those users that register into the raffle with 0.1 eth participation fee. 
 
 
 ## 🚀 Getting Started
