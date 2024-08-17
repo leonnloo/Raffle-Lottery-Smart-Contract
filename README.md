@@ -1,4 +1,4 @@
-# Ruffle Smart Contract
+# Raffle Smart Contract
 
 ## 📖 Overview
 
